@@ -1,0 +1,56 @@
+<template name="Filter" xmlns="http://www.w3.org/1999/html">
+    <div id="filterTemplate">
+        <div class="templateHeader">
+            <table class="ui five column table segment">
+                <tbody>
+                <tr>
+                    <td class="ten wide">
+                        <h2 class="ui teal header">
+                            <i class="filter icon"></i>
+
+                            <div class="content">
+                                Filter
+                                <div class="sub header">List of filtered items to be manually reviewed.</div>
+                            </div>
+                        </h2>
+                    </td>
+                    <td>
+                        <div class="ui form">
+                            <div class="fields">
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input id="status" type="radio" name="filterType" value="StatusFilter" checked>
+                                        <label for="status">Status</label>
+                                    </div>
+
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input id="comment" type="radio" name="filterType" value="CommentFilter">
+                                        <label for="comment">Comment</label>
+                                    </div>
+
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input id="bucket" type="radio" name="filterType" value="BucketFilter">
+                                        <label for="bucket">Bucket</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--<div class="ui horizontal icon divider">
+            </div>-->
+        </div>
+        <div class="templateBody">
+            {{> Template.dynamic template=template}}
+        </div>
+    </div>
+</template>
+

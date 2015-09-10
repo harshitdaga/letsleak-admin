@@ -1,0 +1,49 @@
+/*
+ * LetsLeak
+ * An anonymonus social platform
+ * Copyright 2014 LetsLeak
+ * https://github.com/harshitdaga/letsleak
+*/
+/*****************************************************************************/
+/* Global CSS Styles */
+/*****************************************************************************/
+body{
+    margin: auto;
+}
+
+.templateBody{
+    margin-top: 2%;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show{
+    display: none !important;
+}
+
+.marginTop10{
+    margin-top: 10px !important;
+}
+
+.marginTop20{
+    margin-top: 20px !important;
+}
+
+.table td{
+    /*border: none !important;*/
+}
+
+.right {
+    float: right !important;
+}
+
+.left {
+    float: left !important;
+}
+
+.btn-hover-green.active, .btn-hover-green:hover, .btn-hover-greens .active.button, .btn-hover-greens .button:hover {
+    background-color: #58cb73;
+    color: #FFF;
+}

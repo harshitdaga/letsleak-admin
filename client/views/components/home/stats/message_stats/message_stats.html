@@ -1,0 +1,80 @@
+
+<template name="MessageStats">
+  <div id="messageStatsTemplate">
+
+          <div class="templateHeader">
+              <table class="ui five column table segment">
+                  <tbody>
+                  <tr>
+                      <td class="fourteen wide">
+                          <h2 class="ui teal header">
+                              <i class="filter icon"></i>
+
+                              <div class="content">
+                                  Message details
+                                  <div class="sub header"></div>
+                              </div>
+                          </h2>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+
+          <div class="templateBody" id="content">
+              <form id="messageSearchForm">
+                  <div class="ui form segment {{#if eq dataReady false}} loading {{/if}}">
+                      <div class="field">
+                          <input placeholder="Post id" id="postId" type="text">
+                      </div>
+                      <div class="ui blue submit button mini" id="submitButton">Submit</div>
+                  </div>
+              </form>
+              {{#with messageDetails}}
+              <table class="ui basic table">
+                  <tbody>
+                  <tr>
+                      <td>_id</td>
+                      <td>{{this._id}}</td>
+                  </tr>
+                  <tr>
+                      <td>Message</td>
+                      <td>{{f_message}}</td>
+                  </tr>
+                  <tr class="hide">
+                      <td>Author</td>
+                      <td>{{f_author}}</td>
+                  </tr>
+                  <tr>
+                      <td>Expires</td>
+                      <td>{{convertToString f_expires}}  {{#if eq f_expires true}}({{f_expiryTime}}){{/if}}</td>
+                  </tr>
+                  <tr>
+                      <td>Comment Allowed</td>
+                      <td>{{f_isCommentAllowed}}</td>
+                  </tr>
+                  <tr>
+                      <td>Timestamp</td>
+                      <td>{{>Timestamp timestamp=f_timestamp}}</td>
+                  </tr>
+                  <tr>
+                      <td>Color</td>
+                      <td>{{f_color}}</td>
+                  </tr>
+                  <tr>
+                      <td>Under Review</td>
+                      <td> {{convertToString f_under_review}}</td>
+                  </tr>
+                  <tr>
+                      <td>Flagged</td>
+                      <td>{{convertToString f_flagged}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+              {{/with}}
+    </div>
+
+
+  </div>
+</template>
+

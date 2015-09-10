@@ -1,0 +1,21 @@
+<template name="Timestamp">
+    <span id="timestampTemplate">
+        {{#with formatTime this.timestamp}}
+        {{#if this.isYearOld}}
+        <span>{{this.month}}/{{this.date}}/{{this.year}}</span>
+        {{/if}}
+
+        {{#if this.isMonthly}}
+        <span>{{this.date}}/{{this.month}}</span>
+        {{/if}}
+
+        {{#if this.isWeekly}}
+        <span>{{this.day}}</span>
+        {{/if}}
+
+        {{#if this.isRecent}}
+        <span>{{this.time}} {{this.meridiem}}</span>
+        {{/if}}
+        {{/with}}
+    </span>
+</template>

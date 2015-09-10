@@ -1,0 +1,76 @@
+<template name="HomeLayout">
+    {{> Header}}
+   <div class="yieldContainer">
+       {{> yield}}
+   </div>
+
+</template>
+
+
+<template name="Header">
+   <div id="headerTemplate">
+       <div class="ui menu inverted" id="mainMenu">
+           <a class="item" href="/home" id="home">
+               <i class="home icon "></i> Home
+           </a>
+
+           <div class="ui dropdown pointing link item">
+               <i class="mail icon"></i>Mails
+
+               <div class="menu">
+                   <a class="item" href="/home/invitation/account" id="pendingAccountInvitation">
+                       <i class="time icon "></i> Invitation
+                   </a>
+                   <a class="item" href="/home/promo" id="promo">
+                       <i class="bullhorn icon "></i> Promotion
+                   </a>
+                   {{#if eq _validAgent true}}
+                   <a class="item" href="/home/mails/newletter" id="newsletter">
+                       <i class="inbox icon "></i> Newsletter
+                   </a>
+                   {{/if}}
+               </div>
+           </div>
+           <a class="item" href="/home/reportAbuse" id="reportAbuse">
+               <i class="flag icon "></i> Report abuse
+           </a>
+           <a class="item" href="/home/filter" id="filter">
+               <i class="filter icon "></i> Filter
+           </a>
+           {{#if eq _validAgent true}}
+           <div class="ui dropdown pointing link item">
+               <i class="info icon "></i> Stats
+
+               <div class="menu">
+                   <a class="item" href="/home/stats/account" id="statsAccount">
+                       <i class="time icon "></i> Accounts
+                   </a>
+                   <a class="item" href="/home/stats/message" id="mail">
+                       <i class="inbox icon "></i> Message
+                   </a>
+               </div>
+           </div>
+          {{/if}}
+           <div class="right menu">
+               <!--<div class="item">
+                   <div class="ui icon input">
+                       <input type="text" placeholder="Search...">
+                       <i class="search link icon"></i>
+                   </div>
+               </div>-->
+               <div class="item">
+                   {{toCapitalize agentName}}
+                   <div class="tiny circular ui icon button" id="signOut">
+                       <i class="icon sign out "></i>
+                   </div>
+                   <!-- <div class="ui teal button">-->
+                   <!--<i class="circular sign out icon"></i>-->
+                   <!--</div>-->
+               </div>
+           </div>
+
+       </div>
+   </div>
+
+
+</template>

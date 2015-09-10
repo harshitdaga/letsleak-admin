@@ -1,0 +1,39 @@
+/*
+ * LetsLeak
+ * An anonymonus social platform
+ * Copyright 2014 LetsLeak
+ * https://github.com/harshitdaga/letsleak
+*/
+/*****************************************************************************/
+/* MasterLayout: Style */
+/*****************************************************************************/
+
+/*
+#headerTemplate{
+    padding-bottom: 2%;
+}
+
+#headerTemplate i.big.icon{
+    font-size: 2.5em;
+}
+
+#headerTemplate .mailIconPositioned{
+    margin-left: -17px;
+    margin-top: -12px;
+}*/
+
+.yieldContainer {
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+#headerTemplate{
+    background: #000000;
+}
+
+#headerTemplate #mainMenu {
+    background: transparent;
+    width: 90%;
+    margin: auto;
+}

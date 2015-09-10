@@ -1,0 +1,110 @@
+
+<template name="CommentFilter">
+    <div class="filterTemplate" id="commentFilterTemplate">
+        {{#if eq status true}}
+        <table class="ui table basic">
+            <thead>
+            <tr>
+                <th class="ten wide">Comment</th>
+                <th class="two wide">Dated</th>
+                <th>Details</th>
+                <th class="three">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each commentFilterList}}
+            <tr>
+                <td>
+                    {{this.f_data.f_comment}}
+                </td>
+                <td>
+                    {{>Timestamp timestamp=this.f_timestamp}}
+                </td>
+                <td>
+                    <div class="tiny circular ui icon button filter-message-details" value="{{this._id}}">
+                        <i class="icon open basic"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="mini ui buttons">
+                        <div class="mini ui button invalidComment" value="{{this._id}}" action="invalid">Invalid</div>
+                        <div class="or"></div>
+                        <div class="mini ui positive button validComment" value="{{this._id}}" action="valid">Valid</div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        Loading
+        {{>Loading}}
+        {{/if}}
+
+
+        <div class="ui modal" id="commentFilterModal">
+            <i class="close icon"></i>
+
+            <div class="header">
+                Action confirmation
+            </div>
+            <div class="content">
+                <div class="left">
+                    Are you sure you want the below message as <b>{{confirmationHeader}}</b> ?
+                    <table class="ui table basic">
+                        <thead>
+                        <tr>
+                            <th class="ten wide">Comment</th>
+                            <th class="two wide">byAuthor</th>
+                            <th>Type</th>
+                            <!--<th>UserId</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each confirmationContent}}
+                        <tr>
+                            <td>{{this.f_data.f_comment}}</td>
+                            <td>
+                                {{#if eq this.f_data.f_byAuthor true}}
+                                true
+                                {{else}}
+                                false
+                                {{/if}}
+                            </td>
+                            <td>{{this.f_data.f_type}}</td>
+                            <!--<td>{{this.f_data.f_userId}}</td>-->
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                    {{# if eq confirmationHeader "INVALID"}}
+                        <div class="marginTop20">
+                            Reason : &nbsp;&nbsp;
+                            <div class="ui compact menu" id="reasonDropdown">
+                                <div class="ui simple dropdown item inline" >
+                                    <div class="text">Please select a reason</div>
+                                    <div class="menu">
+                                        <div class="item">Someone's name is explicitly mentioned.</div>
+                                        <div class="item">Contains sexually explicit content.</div>
+                                        <div class="item">May hurt someone's sentiments.</div>
+                                        <div class="item">Junk content.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui button" id="cancelConfirmation">
+                    Cancel
+                </div>
+                <div class="ui button positive" id="okConfirmation">
+                    Okay
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

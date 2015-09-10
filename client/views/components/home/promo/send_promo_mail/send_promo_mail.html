@@ -1,0 +1,95 @@
+<template name="SendPromoMail">
+    <div id="sendPromoMailTemplate">
+
+        <div class="templateHeader">
+            <table class="ui five column table segment">
+                <tbody>
+                <tr>
+                    <td >
+                        <h2 class="ui teal header">
+                            <i class="filter icon"></i>
+
+                            <div class="content">
+                                Send Promo Mails
+                                <div class="sub header">List of all the email id's, for whom promo mail is not yet sent.</div>
+                            </div>
+                        </h2>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="templateBody" id="content">
+            <div class="ui active" id="reloadLoader">
+                <div class="ui medium inverted text loader">Please wait, while I am fetching data from server!</div>
+            </div>
+
+            {{#if pendingInvitationExist}}
+            <table class="ui table three column segment basic">
+                <thead>
+                <tr>
+                    <th class="ten wide">
+                        <input id="allIds" type="checkbox" class="hide pendingEmailIdCheckBox">
+                        <label for="allIds">Mail Id</label>
+                    </th>
+                    <th class="two wide">Last Updated</th>
+                    <th class="two wide">Approve</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each accountList}}
+                <tr>
+                    <td>
+                        <input id="{{this._id}}" value={{this._id}} type="checkbox"
+                               class="hide pendingEmailIdCheckBox">
+                        <label for="{{this._id}}">{{this._id}}</label>
+                    </td>
+
+                    <td>{{>Timestamp timestamp=this.f_lastUpdated}}</td>
+                    <td>
+                        <div class="ui button tiny sendMailSingle" id="{{convert this._id}}" emailId="{{this._id}}">Send Mail
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            <div id="showMore">
+                <a class="ui default button tiny circular" id="showMoreButton">Show more</a>
+            </div>
+
+            {{else}}
+            <div class="ui icon message">
+                <i class="warning icon"></i>
+
+                <div class="content">
+                    <div class="header">
+                        No pending promo invitation!
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+        <!--<h2 class="ui right floated header">
+            <div class="ui basic button circular" id="reloadButton">
+                <i class="icon refresh"></i>
+                Reload
+            </div>
+        </h2>-->
+
+        <!--<h2 class="ui right floated header">
+            <div class="ui basic button" id="multipleMode">
+                <i class="icon list layout"></i>
+                Multiple Mode
+            </div>
+        </h2>-->
+
+
+        <!--<h2 class="ui right floated header">
+            <div class="ui green hover button hide" id="sendInviteMultiple">
+                Send Invites
+            </div>
+        </h2>-->
+    </div>
+</template>

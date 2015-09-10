@@ -1,0 +1,33 @@
+<template name="Links">
+    {{#if eq this.key "/"}}
+    <a target="{{this.target}}" href="{{this.url}}">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "SignIn"}}
+    <a target="{{this.target}}" href="{{this.url}}">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "AboutUs"}}
+    <a target="{{this.target}}" href="{{this.url}}/whyLetsLeak">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "GroundRules"}}
+    <a target="{{this.target}}" href="{{this.url}}/GroundRules">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "FAQ"}}
+    <a target="{{this.target}}" href="{{this.url}}/FAQs">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "TnC"}}
+    <a target="{{this.target}}" href="{{this.url}}/TnC">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "Report"}}
+    <a target="{{this.target}}" href="{{this.url}}/Report">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "Privacy"}}
+    <a target="{{this.target}}" href="{{this.url}}/Privacy">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "ContactUs"}}
+    <a target="{{this.target}}" href="{{this.url}}/ContactUs">{{this.message}}</a>
+    {{/if}}
+    {{#if eq this.key "More"}}
+    <a target="{{this.target}}" href="{{this.url}}/whyLetsLeak">{{this.message}}</a>
+    {{/if}}
+</template>
+

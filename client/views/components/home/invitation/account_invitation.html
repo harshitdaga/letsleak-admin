@@ -1,0 +1,103 @@
+<template name="AccountInvitation">
+    <div id="accountInvitationTemplate">
+
+        <div class="templateHeader">
+            <table class="ui five column table segment">
+                <tbody>
+                <tr>
+                    <td >
+                        <h2 class="ui teal header">
+                            <i class="filter icon"></i>
+
+                            <div class="content">
+                                Pending Invitation Request
+                                <div class="sub header">List of all the email id's, waiting for invitation request to be sent.</div>
+                            </div>
+                        </h2>
+                    </td>
+                    <td class="two wide">
+                        <div class="ui vertically divided grid">
+                            <div class="three column row" style="margin: auto">
+                                <div class="column">
+                                    <div class="ui green hover button hide tiny" id="sendInviteMultiple">
+                                        Send Invites
+                                    </div>
+                                </div>
+                                <div class="column six wide">
+                                    <div class="ui basic button tiny" id="multipleMode">
+                                        <i class="icon list layout"></i>
+                                        Multiple Mode
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="ui icon button circular mini" id="reloadButton">
+                                        <i class="refresh icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="templateBody" id="content">
+            <div class="ui active" id="reloadLoader">
+                <div class="ui medium inverted text loader">Please wait, while I am fetching data from server!</div>
+            </div>
+
+            {{#if pendingInvitationExist}}
+            <table class="ui sortable table segment" id="inviteTable">
+                <thead>
+                <tr>
+                    <th>
+                        <input id="allIds" type="checkbox" class="hide pendingEmailIdCheckBox">
+                        <label for="allIds">Mail Id</label>
+                    </th>
+                    <th class="wide five">Invite Code</th>
+                    <th class="wide two">Time</th>
+                    <th class="wide two">Approve</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each accountList}}
+                <tr>
+                    <td>
+                        <input id="{{this._id}}" value={{this.inviteCode}} type="checkbox"
+                               class="hide pendingEmailIdCheckBox">
+                        <label for="{{this._id}}">{{this._id}}</label>
+                    </td>
+                    <td>{{this.inviteCode}}</td>
+                    <td>{{>Timestamp timestamp=this.f_timestamp}}</td>
+                    <td>
+                        <div class="ui button sendInviteSingle mini" id="{{this.inviteCode}}" emailId="{{this._id}}"
+                             inviteCode="{{this.inviteCode}}">Send
+                            invite
+                        </div>
+                    </td>
+                    {{enableTableSort}}
+                </tr>
+                {{/each}}
+
+                </tbody>
+            </table>
+            <div id="showMore">
+                <a class="ui default button tiny" id="showMoreButton">Show more</a>
+            </div>
+
+            {{else}}
+            <div class="ui icon message">
+                <i class="warning icon"></i>
+
+                <div class="content">
+                    <div class="header">
+                        No pending invitation!
+                    </div>
+                    <p>Seems like people are not creating account!</p>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

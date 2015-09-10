@@ -1,0 +1,27 @@
+<template name="Promo">
+    <div id="promoTemplate">
+
+       <!-- <div class="ui pointing secondary menu">
+            <a class="active item" id="add">
+                <i class="home icon"></i> Add Account
+            </a>
+            <a class="item" id="send">
+                <i class="mail icon"></i> Send Mail
+            </a>
+        </div>-->
+
+        <div class="ui tabular menu">
+            <a class="active item" id="send">
+                <i class="mail icon"></i> Send Mail
+            </a>
+            <a class="item" id="add">
+                <i class="home icon"></i> Add Account
+            </a>
+        </div>
+
+        <div id="content">
+            {{> UI.dynamic template=template}}
+        </div>
+    </div>
+</template>
+

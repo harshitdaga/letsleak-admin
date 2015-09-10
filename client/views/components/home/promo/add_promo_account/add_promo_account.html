@@ -1,0 +1,82 @@
+<template name="AddPromoAccount">
+    <div id="addPromoAccountTemplate">
+
+        <div class="templateHeader">
+            <table class="ui five column table segment">
+                <tbody>
+                <tr>
+                    <td >
+                        <h2 class="ui teal header">
+                            <i class="filter icon"></i>
+
+                            <div class="content">
+                                Add Accounts
+                                <div class="sub header">Add email id to send promo mail, trigger promo mails on bulk or selected.</div>
+                            </div>
+                        </h2>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--<div class="ui horizontal icon divider">
+            </div>-->
+        </div>
+
+        <div class="templateBody" id="content">
+            <!-- Add a new email id -->
+
+            <div class="ui error message hide" id="promo-generic-error">
+                <i class="close icon"></i>
+
+                <div class="header">
+                </div>
+            <span>
+            </span>
+            </div>
+
+            <div class="ui success message hide" id="promo-generic-success">
+                <i class="close icon"></i>
+
+                <div class="header">
+                </div>
+            <span>
+            </span>
+            </div>
+
+            <div class="ui bottom attached error message hide" id="addFormError">
+                <i class="icon help"></i>
+                <span>Some message</span>
+            </div>
+
+
+            <div class="ui attached message">
+                <div class="header">
+                    Add a new email-id for sending promo mail?
+                </div>
+                <p>Multiple email-ids example : email@gmail.com,email2@gmail.com,email3@gmail.com</p>
+            </div>
+            <form class="ui form attached fluid segment" id="addEmailForm">
+
+                <div class="inline field">
+                    <div class="ui toggle checkbox">
+                        <input id="bulkEmails" type="checkbox">
+                        <label for="bulkEmails">Bulk Email Ids</label>
+                    </div>
+                </div>
+
+                <div class="inline field">
+                    <label>Email</label>
+                    <input placeholder="Email id" type="text">
+                </div>
+
+                <div class="field inline hide" id="bulkEmailsField">
+                    <label>Bulk Email's</label>
+                    <textarea disabled="disabled"></textarea>
+                </div>
+                <div class="ui blue button" id="addEmailButton">Add email(s)</div>
+            </form>
+        </div>
+    </div>
+</template>
+

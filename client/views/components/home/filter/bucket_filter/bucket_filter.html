@@ -1,0 +1,120 @@
+<template name="BucketFilter">
+    <div class="filterTemplate" id="bucketFilterTemplate">
+        {{#if eq status true}}
+        <b style="color: red">Make a change to not to insert update for same bucket multiple time!</b>
+        <table class="ui table basic">
+            <thead>
+            <tr>
+                <th class="five wide">Bucket name</th>
+                <th class="five wide">Description</th>
+                <th class="two wide">Dated</th>
+                <th>Details</th>
+                <th class="three">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each bucketFilterList}}
+            <tr>
+                <td>
+                    {{this.f_data.f_bucket.f_name}}
+                </td>
+                <td>
+                    {{this.f_data.f_bucket.f_desc}}
+                </td>
+                <td>
+                    {{>Timestamp timestamp=this.f_timestamp}}
+                </td>
+                <td>
+                    <div class="tiny circular ui icon button filter-message-details" value="{{this._id}}">
+                        <i class="icon open basic"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="mini ui buttons">
+                        <div class="mini ui button invalidComment" value="{{this._id}}" action="invalid">Invalid</div>
+                        <div class="or"></div>
+                        <div class="mini ui positive button validComment" value="{{this._id}}" action="valid">Valid
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        Loading
+        {{>Loading}}
+        {{/if}}
+
+
+        <div class="ui modal" id="bucketFilterModal">
+            <i class="close icon"></i>
+
+            <div class="header">
+                Action confirmation
+            </div>
+            <div class="content">
+                <div class="left">
+                    Are you sure you want the below message as <b>{{confirmationHeader}}</b> ?
+                    <table class="ui table basic">
+                        <thead>
+                        <tr>
+
+                            <th class="five wide">Bucket name</th>
+                            <th class="five wide">Description</th>
+                            <th>Is Editable</th>
+                            <th>Access Type</th>
+                            <!--<th>UserId</th>-->
+                            <th>Action Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each confirmationContent}}
+                        <tr>
+                            <td>{{this.f_data.f_bucket.f_name}}</td>
+                            <td>{{this.f_data.f_bucket.f_desc}}</td>
+                            <td>
+                                {{#if eq this.f_data.f_bucket.f_isEditable true}}
+                                true
+                                {{else}}
+                                false
+                                {{/if}}
+                            </td>
+                            <td>{{this.f_data.f_bucket.f_access}}</td>
+                            <!--<td>{{this.f_data.f_userId}}</td>-->
+                            <td>{{this.f_additional_info.f_action}}</td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+
+                    {{# if eq confirmationHeader "INVALID"}}
+                    <div class="marginTop20">
+                        Reason : &nbsp;&nbsp;
+                        <div class="ui compact menu" id="reasonDropdown">
+                            <div class="ui simple dropdown item inline" >
+                                <div class="text">Please select a reason</div>
+                                <div class="menu">
+                                    <div class="item">Someone's name is explicitly mentioned.</div>
+                                    <div class="item">Contains sexually explicit content.</div>
+                                    <div class="item">May hurt someone's sentiments.</div>
+                                    <div class="item">Junk content.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui button" id="cancelConfirmation">
+                    Cancel
+                </div>
+                <div class="ui button positive" id="okConfirmation">
+                    Okay
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

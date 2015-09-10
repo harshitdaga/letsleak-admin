@@ -1,0 +1,84 @@
+
+<template name="AccountStats">
+  <div id="accountStatsTemplate">
+      <div class="templateHeader">
+          <table class="ui five column table segment">
+              <tbody>
+              <tr>
+                  <td class="fourteen wide">
+                      <h2 class="ui teal header">
+                          <i class="filter icon"></i>
+
+                          <div class="content">
+                              Account Creation Stats
+                              <div class="sub header">List of all the email id's to whom mail was sent and created the account or need to resend invitation request.</div>
+                          </div>
+                      </h2>
+                  </td>
+                  <td>
+                      <div class="ui icon button circular mini right" id="reloadButton">
+                          <i class="refresh icon"></i>
+                      </div>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div class="templateBody" id="content">
+          {{#if eq dataReady true}}
+          <table class="ui sortable table segment" id="invitedAccountTable">
+              <thead>
+              <tr>
+                  <th>Mail Id's</th>
+                  <!--<th class="wide five">Invite Code</th>-->
+                  <th class="wide two">Is Registered?</th>
+                  <th class="wide two">Request Time</th>
+                  <th class="wide two">Mail Sent Time</th>
+                  <th class="wide two">Resend Invite</th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each sendInviteList}}
+              <tr>
+                  <td>
+                      {{this._id}}
+                  </td>
+                  <!--<td>
+                      {{this.inviteCode}}
+                  </td>-->
+                  <td>
+                      {{this.isRegistered}}
+                  </td>
+                  <td>
+                      {{>Timestamp timestamp=this.f_timestamp}}
+                  </td>
+                  <td>
+                      {{>Timestamp timestamp=this.f_mailSentTime}}
+                  </td>
+                  <td>
+                      <div class="ui button btn-hover-green resendInvite mini" id="{{this.inviteCode}}" emailId="{{this._id}}" inviteCode="{{this.inviteCode}}">
+                          Resend
+                          {{#if neq mailResendCount 0}}
+                          <div class="ui black circular label">
+                          {{this.f_mail_resend_count}}</div>
+                          {{/if}}
+                      </div>
+                  </td>
+              </tr>
+              {{/each}}
+              </tbody>
+          </table>
+          {{enableTableSort "invitedAccountTable"}}
+
+          <div id="showMore">
+              <a class="ui default button tiny" id="showMoreButton">Show more</a>
+          </div>
+
+          {{else}}
+            {{>Loading}}
+          {{/if}}
+      </div>
+  </div>
+</template>
+

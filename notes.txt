@@ -1,0 +1,8 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+External Packages
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Iron router meteor add iron:router
+Bootstrap
+Semantic meteor add nooitaf:semantic-ui
+Server Handlerbars meteor add cmather:handlebars-server
+Email meteor add email
